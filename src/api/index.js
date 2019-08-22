@@ -1,8 +1,7 @@
+//调用数据接口
 import ajax from './ajax'
-const BASE_URL = 'http://localhost:3333'
+const BASE_URL = 'http://localhost:3000'
 const USER_API = '/api';
-const MAIN_API = '/main';
-const ADMIN_API = '/admin';
 
-//获取验证码
-export const reqCaptcha = () => ajax(BASE_URL + MAIN_API + '/getcaptcha', {}, 'GET')
+//注册
+export const reqRegist=(data)=> ajax(BASE_URL+USER_API+'/user/regist',{data},'POST')
