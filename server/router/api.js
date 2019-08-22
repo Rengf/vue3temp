@@ -4,10 +4,6 @@ let router = express.Router();
 //时间格式化插件
 let moment = require('moment');
 
-//连接数据库
-let mysql_connect = require('../db/mysql_connect');
-var client = mysql_connect.connectServer();
-
 //测试用例
 let User = require('../CRUD/user');
 
@@ -24,7 +20,7 @@ router.post('/user/regist', function(req, res, next) {
             user_pwd: user_pwd,
             regist_time: regist_time,
         }
-        User.regist(client, data, function(err,result) {
+        User.regist(data, function(err,result) {
             console.log(err,result)
             res.json({
                 code: 0,

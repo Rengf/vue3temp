@@ -1,7 +1,11 @@
+//连接数据库
+let mysql_connect = require('../db/mysql_connect');
+var client = mysql_connect.connectServer();
+
 module.exports = {
     //测试用例
     //注册
-    regist(client, data, callback) {
+    regist(data, callback) {
         var sql = `insert into user
         (user_password,user_name,regist_time)
         values(?,?,?);`
@@ -10,7 +14,6 @@ module.exports = {
             data.user_name,
             data.regist_time
         ];
-
         client.query(sql, params, (err, result) => {
             if (err) {
                 console.log(err);
