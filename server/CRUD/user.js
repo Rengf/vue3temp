@@ -12,8 +12,11 @@ module.exports = {
         ];
 
         client.query(sql, params, (err, result) => {
-            if (err) throw err
-            callback(result);
+            if (err) {
+                console.log(err);
+            } else{
+                callback(result);
+            }
         })
     }
 }

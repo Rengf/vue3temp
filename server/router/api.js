@@ -24,7 +24,8 @@ router.post('/user/regist', function(req, res, next) {
             user_pwd: user_pwd,
             regist_time: regist_time,
         }
-        User.regist(client, data, function(result) {
+        User.regist(client, data, function(err,result) {
+            console.log(err,result)
             res.json({
                 code: 0,
                 message: '注册成功',
