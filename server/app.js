@@ -3,6 +3,9 @@ let bodyParser = require('body-parser');
 let session = require('express-session');
 let Cookies = require('cookies');
 
+let mongodb_connect = require("./mongodb/mongodb_connect");
+var client = mongodb_connect;
+
 let app = express();
 
 app.use(bodyParser.urlencoded({
@@ -28,7 +31,7 @@ app.use(session({
 
 app.use('/api', require('./router/api'));
 
-
+client.connectServer();
 app.listen(3000, function() {
     console.log('app is listening on port 3000.');
 })

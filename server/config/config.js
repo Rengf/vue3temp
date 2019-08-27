@@ -1,4 +1,4 @@
-var config = {
+var mysql_config = {
     host: '127.0.0.1',
     user: 'root',
     port: 3306,
@@ -6,4 +6,4 @@ var config = {
     database: '数据库名'
 }
 
-module.exports = config;
+module.exports = mysql_config;
