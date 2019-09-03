@@ -1,18 +1,21 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <input type="text" v-model="searchMsg" @input="showMsg()" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
+  name: "home",
+  data() {
+    return {
+      searchMsg: ""
+    };
+  },
+  methods: {
+    showMsg() {
+      console.log(this.searchMsg);
+    }
   }
-}
+};
 </script>
