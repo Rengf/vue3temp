@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <input type="text" @keydown.enter="search()" v-model="searchmsg" />
+    <input type="text" @keydown.enter="search('','','search')" v-model="searchmsg" />
     <h1>This is an about page</h1>
     <ul>
       <li v-for="(item,index) in data.data" :key="index">{{index+1}}---------{{item.user_name}}</li>
@@ -24,15 +24,18 @@ export default {
   },
   watch: {},
   methods: {
-    async search(pages, limit) {
+    async search(pages, limit, s) {
       var search = {
-        limit: limit || 10,
+        limit: limit || parseInt(this.$children[0].display),
         pages: pages || 0
       };
       if (this.searchmsg != "") {
-        this.$children[0].current = 1;
+        if (s == "search") {
+          this.$children[0].current = 1;
+        }
         search.searchmsg = this.searchmsg;
       }
+      console.log(search);
       this.data = await reqSearch(search);
     }
   },
