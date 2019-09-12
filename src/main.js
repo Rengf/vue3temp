@@ -1,10 +1,13 @@
-import '@babel/polyfill'
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
 import axios from 'axios'
+
+import './assets/css/iconfont.js'
+import './assets/css/iconfont.css'
+
 
 //配置axios
 axios.defaults.withCredentials = true
