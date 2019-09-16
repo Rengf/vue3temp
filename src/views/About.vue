@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <!-- <input type="text" @keydown.enter="search('','','search')" v-model="searchmsg" /> -->
-    <Search :searchmsg="searchmsg" @searchmsg="search('','','search')"></Search>
+    <Search @searchmsg="search(0,10,'search')"></Search>
     <h1>This is an about page</h1>
     <ul>
       <li v-for="(item,index) in data.data" :key="index">{{index+1}}---------{{item.user_name}}</li>
@@ -29,14 +29,14 @@ export default {
   methods: {
     async search(pages, limit, s) {
       var search = {
-        limit: limit || parseInt(this.$children[0].display),
+        limit: limit || parseInt(this.$children[1].display),
         pages: pages || 0
       };
-      if (this.searchmsg != "") {
+      if (this.$children[0].searchmsg != "") {
         if (s == "search") {
-          this.$children[0].current = 1;
+          this.$children[1].current = 1;
         }
-        search.searchmsg = this.searchmsg;
+        search.searchmsg = this.$children[0].searchmsg;
       }
       this.data = await reqSearch(search);
     }
